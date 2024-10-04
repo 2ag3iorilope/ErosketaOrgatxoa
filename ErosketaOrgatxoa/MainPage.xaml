@@ -73,6 +73,16 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
+            <Button Grid.Column="0" Grid.Row="3" 
+                    Text="Desegina" 
+                    HorizontalOptions="Start" 
+                    VerticalOptions="End" 
+                    Margin="10" 
+                    WidthRequest="100" 
+                    BackgroundColor="White" 
+                    TextColor="Black"
+                    BorderColor="Black" 
+                    StyleClass="CustomButton" />
 
         </Grid>
     </ScrollView>
