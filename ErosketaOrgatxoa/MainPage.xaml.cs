@@ -1,100 +1,122 @@
 ﻿using Microsoft.Maui.Controls;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace ErosketaOrgatxoa
 {
     public partial class MainPage : ContentPage
     {
-        public ObservableCollection<string> fruitsInCart { get; set; } = new ObservableCollection<string>();
+        public ObservableCollection<KeyValuePair<string, int>> fruitsInCart { get; set; } = new ObservableCollection<KeyValuePair<string, int>>();
 
         public MainPage()
         {
             InitializeComponent();
-            fruitsListView.ItemsSource = fruitsInCart; // Asignar la fuente de datos al ListView
+            fruitsListView.ItemsSource = fruitsInCart; 
         }
 
- void OnDragStarting(object sender, DragStartingEventArgs e)
-{
-    System.Diagnostics.Debug.WriteLine("OnDragStarting invocado");
-
-    // Verificar que el sender sea un DragGestureRecognizer
-    if (sender is DragGestureRecognizer dragGestureRecognizer)
-    {
-        // Obtener el elemento que contiene el gesto
-        var image = dragGestureRecognizer.Parent as Image;
-
-        if (image != null)
+        void OnDragStarting(object sender, DragStartingEventArgs e)
         {
-            // Obtener el nombre de la imagen
-            string fruitName = image.Source.ToString();
+            System.Diagnostics.Debug.WriteLine("OnDragStarting invocado");
 
-            // Determinar el nombre de la fruta a partir del Source
-            if (fruitName.Contains("sandia"))
-                fruitName = "Sandía";
-            else if (fruitName.Contains("manzana"))
-                fruitName = "Manzana";
-            else if (fruitName.Contains("pera"))
-                fruitName = "Pera";
-            else if (fruitName.Contains("naranja"))
-                fruitName = "Naranja";
-            else if (fruitName.Contains("pinia"))
-                fruitName = "Piña";
-            else if (fruitName.Contains("melon"))
-                fruitName = "Melón";
-
-            // Almacenar el nombre de la fruta en los datos de arrastre
-            if (!string.IsNullOrEmpty(fruitName))
+       
+            if (sender is DragGestureRecognizer dragGestureRecognizer)
             {
-                e.Data.Properties.Add("FruitName", fruitName);
-                System.Diagnostics.Debug.WriteLine($"Arrastrando fruta: {fruitName}");
-                        
+             
+                var image = dragGestureRecognizer.Parent as Image;
 
-                    }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("No se pudo determinar el nombre de la fruta.");
-            }
-        }
-        else
-        {
-            System.Diagnostics.Debug.WriteLine("No se pudo obtener la imagen del DragGestureRecognizer.");
-        }
-    }
-    else
-    {
-        System.Diagnostics.Debug.WriteLine($"El objeto que se arrastra no es un DragGestureRecognizer: {sender.GetType()}");
-               
-            }
-            
-}
-
-
-
-
-        // Manejador para recibir la fruta en el carrito
-        void OnDrop(object sender, DropEventArgs e)
-        {
-            // Verificar si se ha recibido un nombre de fruta
-            if (e.Data.Properties.ContainsKey("FruitName"))
-            {
-                // Obtener el nombre de la fruta
-                var fruitName = (string)e.Data.Properties["FruitName"];
-
-               
-                System.Diagnostics.Debug.WriteLine($"Fruta recibida: {fruitName}");
-                //Erabili E HANDLED TRUE ARGAZKIA EZ EGUNERATZEKO
-                e.Handled = true;
-
-                // Añadir el nombre de la fruta a la lista cuando se suelta en el carrito
-                if (!string.IsNullOrEmpty(fruitName))
+                if (image != null)
                 {
-                    fruitsInCart.Add(fruitName); // Añadir a la lista observable
-                    System.Diagnostics.Debug.WriteLine($"Añadido al carrito: {fruitName}"); // Confirmación de adición
+                   
+                    //Lortu frutaren izena
+                    string fruitName = image.Source.ToString();
+
+                   
+                    if (fruitName.Contains("sandia"))
+                        fruitName = "Sandia";
+
+                    else if (fruitName.Contains("manzana"))
+                        fruitName = "Sagarra";
+
+                    else if (fruitName.Contains("pera"))
+                        fruitName = "Udarea";
+
+                    else if (fruitName.Contains("naranja"))
+                        fruitName = "Naranja";
+
+                    else if (fruitName.Contains("pinia"))
+                        fruitName = "Piña";
+
+                    else if (fruitName.Contains("melon"))
+                        fruitName = "Meloia";
+
+                 
+                    if (!string.IsNullOrEmpty(fruitName))
+                    {
+                        e.Data.Properties.Add("FruitName", fruitName);
+                        System.Diagnostics.Debug.WriteLine($"Mugitzen ari zaren fruta: {fruitName}");
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("Ezin da frutaren izena aurkitu.");
+                    }
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("Errorea  DragGestureRecognizer.");
                 }
             }
             else
             {
-                System.Diagnostics.Debug.WriteLine("No se encontró 'FruitName' en las propiedades de datos.");
+                System.Diagnostics.Debug.WriteLine($"Objetua ez da irudi bat: {sender.GetType()}");
+            }
+        }
+
+        async void OnDrop(object sender, DropEventArgs e)
+        {
+            
+            if (e.Data.Properties.ContainsKey("FruitName"))
+            {
+             
+                var fruitName = (string)e.Data.Properties["FruitName"];
+
+                System.Diagnostics.Debug.WriteLine($"Fruta recibida: {fruitName}");
+
+              //IRUDIA EZ ALDATZEKO BEHARREZKOA
+                e.Handled = true;
+
+              
+                if (!string.IsNullOrEmpty(fruitName))
+                {
+                    
+                    for (int i = 0; i < fruitsInCart.Count; i++)
+                    {
+                        if (fruitsInCart[i].Key == fruitName)
+                        {
+                          
+                            if (fruitsInCart[i].Value < 20)
+                            {
+                                int newCount = fruitsInCart[i].Value + 1;
+                                fruitsInCart[i] = new KeyValuePair<string, int>(fruitName, newCount);
+                                System.Diagnostics.Debug.WriteLine($"Kantitatea eguneratu da: {fruitName} x{newCount}");
+                            }
+                            else
+                            {
+                                System.Diagnostics.Debug.WriteLine($"Ezin dira  {fruitName}. Gehiago sartu. Kantitate maximoa burutu da.");
+                              
+                                await DisplayAlert("Limitea lortu duzu", $"Ezin dira 20  {fruitName}. Baino gehiago sartu", "OK");
+                            }
+                            return;
+                        }
+                    }
+
+                
+                    fruitsInCart.Add(new KeyValuePair<string, int>(fruitName, 1));
+                    System.Diagnostics.Debug.WriteLine($"Karritora gehituta: {fruitName} x1");
+                }
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Ez da 'FruitName' aurkitu.");
             }
         }
     }
