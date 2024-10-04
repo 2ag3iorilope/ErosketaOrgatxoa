@@ -10,42 +10,40 @@
                 <ColumnDefinition Width="100" />
                 <ColumnDefinition Width="100" />
                 <ColumnDefinition Width="*" />
-       
+                <ColumnDefinition Width="100" />
+
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
-              
             </Grid.RowDefinitions>
 
-          
-            <ImageButton Grid.Column="0" Grid.Row="0" Source="sandia.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0" />
-            <ImageButton Grid.Column="0" Grid.Row="1" Source="manzana.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0" />
-            <ImageButton Grid.Column="0" Grid.Row="2" Source="pera.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0" />
 
-            <ImageButton Grid.Column="1" Grid.Row="0" Source="naranja.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0" />
-            <ImageButton Grid.Column="1" Grid.Row="1" Source="pinia.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0" />
-            <ImageButton Grid.Column="1" Grid.Row="2" Source="melon.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0" />
+            <Image Grid.Column="0" Grid.Row="0" Source="sandia.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0" />
+            <Image Grid.Column="0" Grid.Row="1" Source="manzana.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0" />
+            <Image Grid.Column="0" Grid.Row="2" Source="pera.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0" />
+            <Image Grid.Column="1" Grid.Row="0" Source="naranja.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0" />
+            <Image Grid.Column="1" Grid.Row="1" Source="pinia.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0" />
+            <Image Grid.Column="1" Grid.Row="2" Source="melon.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0" />
 
-            <Image Grid.Column="2" Grid.Row="0" Source="dotnet_bot.png" Aspect="AspectFit" HeightRequest="70" WidthRequest="70" Margin="0" />
-            <Image Grid.Column="2" Grid.Row="1" Source="dotnet_bot.png" Aspect="AspectFit" HeightRequest="70" WidthRequest="70" Margin="0" />
-            <Image Grid.Column="2" Grid.Row="2" Source="dotnet_bot.png" Aspect="AspectFit" HeightRequest="70" WidthRequest="70" Margin="0" />
+
+
+
+            <Image Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" Source="carrito.png" Aspect="AspectFit" HeightRequest="150" WidthRequest="150" Margin="10" />
 
 
             <Button Grid.Column="0" Grid.Row="3" 
-        Text="Desegin" 
-        HorizontalOptions="Start" 
-        VerticalOptions="End" 
-        Margin="10" 
-        WidthRequest="100" 
-      
-        BackgroundColor="White" 
-        TextColor="Black"
-        BorderColor="Black" 
-        StyleClass="CustomButton" />
-
+                    Text="Desegin" 
+                    HorizontalOptions="Start" 
+                    VerticalOptions="End" 
+                    Margin="10" 
+                    WidthRequest="100" 
+                    BackgroundColor="White" 
+                    TextColor="Black"
+                    BorderColor="Black" 
+                    StyleClass="CustomButton" />
         </Grid>
     </ScrollView>
 
