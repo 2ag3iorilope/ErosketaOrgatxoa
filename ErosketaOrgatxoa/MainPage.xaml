@@ -35,7 +35,7 @@
 
 
             <Button Grid.Column="0" Grid.Row="3" 
-                    Text="Desegin" 
+                    Text="Desegina" 
                     HorizontalOptions="Start" 
                     VerticalOptions="End" 
                     Margin="10" 
