@@ -11,26 +11,26 @@ namespace ErosketaOrgatxoa
         public MainPage()
         {
             InitializeComponent();
-            fruitsListView.ItemsSource = fruitsInCart; 
+            fruitsListView.ItemsSource = fruitsInCart;
         }
 
         void OnDragStarting(object sender, DragStartingEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("OnDragStarting invocado");
 
-       
+
             if (sender is DragGestureRecognizer dragGestureRecognizer)
             {
-             
+
                 var image = dragGestureRecognizer.Parent as Image;
 
                 if (image != null)
                 {
-                   
+
                     //Lortu frutaren izena
                     string fruitName = image.Source.ToString();
 
-                   
+
                     if (fruitName.Contains("sandia"))
                         fruitName = "Sandia";
 
@@ -49,7 +49,7 @@ namespace ErosketaOrgatxoa
                     else if (fruitName.Contains("melon"))
                         fruitName = "Meloia";
 
-                 
+
                     if (!string.IsNullOrEmpty(fruitName))
                     {
                         e.Data.Properties.Add("FruitName", fruitName);
@@ -73,26 +73,26 @@ namespace ErosketaOrgatxoa
 
         async void OnDrop(object sender, DropEventArgs e)
         {
-            
+
             if (e.Data.Properties.ContainsKey("FruitName"))
             {
-             
+
                 var fruitName = (string)e.Data.Properties["FruitName"];
 
-                System.Diagnostics.Debug.WriteLine($"Fruta recibida: {fruitName}");
+                System.Diagnostics.Debug.WriteLine($"Fruta eskuratuta: {fruitName}");
 
-              //IRUDIA EZ ALDATZEKO BEHARREZKOA
+                //IRUDIA EZ ALDATZEKO BEHARREZKOA
                 e.Handled = true;
 
-              
+
                 if (!string.IsNullOrEmpty(fruitName))
                 {
-                    
+
                     for (int i = 0; i < fruitsInCart.Count; i++)
                     {
                         if (fruitsInCart[i].Key == fruitName)
                         {
-                          
+
                             if (fruitsInCart[i].Value < 20)
                             {
                                 int newCount = fruitsInCart[i].Value + 1;
@@ -102,14 +102,14 @@ namespace ErosketaOrgatxoa
                             else
                             {
                                 System.Diagnostics.Debug.WriteLine($"Ezin dira  {fruitName}. Gehiago sartu. Kantitate maximoa burutu da.");
-                              
+
                                 await DisplayAlert("Limitea lortu duzu", $"Ezin dira 20  {fruitName} Baino gehiago sartu", "OK");
                             }
                             return;
                         }
                     }
 
-                
+
                     fruitsInCart.Add(new KeyValuePair<string, int>(fruitName, 1));
                     System.Diagnostics.Debug.WriteLine($"Karritora gehituta: {fruitName} x1");
                 }
@@ -124,24 +124,40 @@ namespace ErosketaOrgatxoa
         {
             if (fruitsInCart.Count > 0)
             {
-                // Eliminar el último elemento añadido
+             
                 var lastItem = fruitsInCart[fruitsInCart.Count - 1];
                 if (lastItem.Value > 1)
                 {
-                    // Si hay más de una unidad de la fruta, reducir la cantidad
+                  
                     fruitsInCart[fruitsInCart.Count - 1] = new KeyValuePair<string, int>(lastItem.Key, lastItem.Value - 1);
                 }
                 else
                 {
-                    // Si es la última unidad, eliminar la fruta del carrito
+                  
                     fruitsInCart.RemoveAt(fruitsInCart.Count - 1);
                 }
-                System.Diagnostics.Debug.WriteLine($"Elemento deshecho: {lastItem.Key}");
+                System.Diagnostics.Debug.WriteLine($"Deseginda: {lastItem.Key}");
             }
             else
             {
-                System.Diagnostics.Debug.WriteLine("No hay elementos para deshacer.");
+                System.Diagnostics.Debug.WriteLine("Ez dago elementurik desegiteko.");
             }
         }
+
+        void OnClearButtonClicked(object sender, EventArgs e)
+        {
+
+            fruitsInCart.Clear();
+            System.Diagnostics.Debug.WriteLine("Fruten zerrenda garbitu da.");
+        }
+
+        void OnExitButtonClicked(object sender, EventArgs e)
+        {
+
+            Application.Current.Quit();
+            System.Diagnostics.Debug.WriteLine("Aplikazioa itxi da.");
+        }
+
+
     }
 }
