@@ -103,7 +103,7 @@ namespace ErosketaOrgatxoa
                             {
                                 System.Diagnostics.Debug.WriteLine($"Ezin dira  {fruitName}. Gehiago sartu. Kantitate maximoa burutu da.");
                               
-                                await DisplayAlert("Limitea lortu duzu", $"Ezin dira 20  {fruitName}. Baino gehiago sartu", "OK");
+                                await DisplayAlert("Limitea lortu duzu", $"Ezin dira 20  {fruitName} Baino gehiago sartu", "OK");
                             }
                             return;
                         }
@@ -117,6 +117,30 @@ namespace ErosketaOrgatxoa
             else
             {
                 System.Diagnostics.Debug.WriteLine("Ez da 'FruitName' aurkitu.");
+            }
+        }
+
+        void OnUndoButtonClicked(object sender, EventArgs e)
+        {
+            if (fruitsInCart.Count > 0)
+            {
+                // Eliminar el último elemento añadido
+                var lastItem = fruitsInCart[fruitsInCart.Count - 1];
+                if (lastItem.Value > 1)
+                {
+                    // Si hay más de una unidad de la fruta, reducir la cantidad
+                    fruitsInCart[fruitsInCart.Count - 1] = new KeyValuePair<string, int>(lastItem.Key, lastItem.Value - 1);
+                }
+                else
+                {
+                    // Si es la última unidad, eliminar la fruta del carrito
+                    fruitsInCart.RemoveAt(fruitsInCart.Count - 1);
+                }
+                System.Diagnostics.Debug.WriteLine($"Elemento deshecho: {lastItem.Key}");
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("No hay elementos para deshacer.");
             }
         }
     }

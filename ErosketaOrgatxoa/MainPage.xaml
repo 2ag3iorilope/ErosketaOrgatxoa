@@ -18,7 +18,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-      
+            <!-- Frutas -->
             <Image x:Name="SandiaImage" Grid.Column="0" Grid.Row="0" Source="sandia.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0">
                 <Image.GestureRecognizers>
                     <DragGestureRecognizer DragStarting="OnDragStarting" />
@@ -55,12 +55,14 @@
                 </Image.GestureRecognizers>
             </Image>
 
-            <Image  Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" Source="carrito.png" Aspect="AspectFit" HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="Center" Margin="10">
+            <!-- Carrito -->
+            <Image Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" Source="carrito.png" Aspect="AspectFit" HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="Center" Margin="10">
                 <Image.GestureRecognizers>
                     <DropGestureRecognizer Drop="OnDrop" />
                 </Image.GestureRecognizers>
             </Image>
 
+            <!-- Lista de frutas en el carrito -->
             <StackLayout Grid.Column="3" Grid.Row="0" Grid.RowSpan="3" Padding="10">
                 <Label Text="Frutak:" FontAttributes="Bold" />
                 <ListView x:Name="fruitsListView">
@@ -70,18 +72,35 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+
+                <!-- Dos botones en vertical debajo del ListView -->
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" Spacing="10" Margin="0,10,0,0">
+                    <Button Text="Confirmar" 
+                            BackgroundColor="Green" 
+                            TextColor="White" 
+                            WidthRequest="100" 
+                          />
+
+                    <Button Text="Cancelar" 
+                            BackgroundColor="Red" 
+                            TextColor="White" 
+                            WidthRequest="100" 
+                          />
+                </StackLayout>
             </StackLayout>
-            
+
+            <!-- Botón "Desegina" -->
             <Button Grid.Column="0" Grid.Row="3" 
-                    Text="Desegina" 
-                    HorizontalOptions="Start" 
-                    VerticalOptions="End" 
-                    Margin="10" 
-                    WidthRequest="100" 
-                    BackgroundColor="White" 
-                    TextColor="Black"
-                    BorderColor="Black" 
-                    StyleClass="CustomButton" />
+                Text="Desegina" 
+                HorizontalOptions="Start" 
+                VerticalOptions="End" 
+                Margin="10" 
+                WidthRequest="100" 
+                BackgroundColor="White" 
+                TextColor="Black"
+                BorderColor="Black" 
+                StyleClass="CustomButton"
+                Clicked="OnUndoButtonClicked" />
 
         </Grid>
     </ScrollView>
