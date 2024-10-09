@@ -1,108 +1,201 @@
-﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ErosketaOrgatxoa.MainPage"
-             BackgroundColor="#F0F0F0">
+﻿<ContentPage
+    x:Class="ErosketaOrgatxoa.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#F0F0F0">
+
 
     <ScrollView>
-        <Grid Padding="0" ColumnSpacing="0" RowSpacing="25">
+        <Grid
+            Padding="0"
+            ColumnSpacing="0"
+            RowSpacing="25">
+            <!--  ? Grid-eko filen arteko espazioa  -->
+
+
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100"/>
+                <!--  ! Argazkientzako lehen kolumna  -->
+                <ColumnDefinition Width="100"/>
+                <!--  ! Argazkientzako bigarren kolumna  -->
+                <ColumnDefinition Width="*"/>
+                <!--  ! Karritoaren argazkia  -->
+                <ColumnDefinition Width="100"/>
+                <!--  ! Fruta zerrenden kolumna  -->
             </Grid.ColumnDefinitions>
-            
+
+            <!--  ? Gure grid-eko filak  -->
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto"/>
+                <!--  ? Lehen aragzkien fila  -->
+                <RowDefinition Height="Auto"/>
+                <!--  ? Bigarren filako aragzkiak  -->
+                <RowDefinition Height="Auto"/>
+                <!--  ? Hirugarren filako argazkiak  -->
+                <RowDefinition Height="*"/>
+                <!--  ? Desegin botoiaren fila  -->
             </Grid.RowDefinitions>
 
-            <Image x:Name="SandiaImage" Grid.Column="0" Grid.Row="0" Source="sandia.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0">
+            <!--  ? Fruten irudiak  -->
+            <Image
+                x:Name="SandiaImage"
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="0"
+                Aspect="AspectFit"
+                HeightRequest="100"
+                Source="sandia.png"
+                WidthRequest="100">
+
                 <Image.GestureRecognizers>
-                    <DragGestureRecognizer DragStarting="OnDragStarting" />
+                    <DragGestureRecognizer DragStarting="OnDragStarting"/>
                 </Image.GestureRecognizers>
             </Image>
 
-            <Image x:Name="ManzanaImage" Grid.Column="0" Grid.Row="1" Source="manzana.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0">
+            <Image
+                x:Name="ManzanaImage"
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="0"
+                Aspect="AspectFit"
+                HeightRequest="100"
+                Source="manzana.png"
+                WidthRequest="100">
                 <Image.GestureRecognizers>
-                    <DragGestureRecognizer DragStarting="OnDragStarting" />
+                    <DragGestureRecognizer DragStarting="OnDragStarting"/>
                 </Image.GestureRecognizers>
             </Image>
 
-            <Image x:Name="PeraImage" Grid.Column="0" Grid.Row="2" Source="pera.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0">
+            <Image
+                x:Name="PeraImage"
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="0"
+                Aspect="AspectFit"
+                HeightRequest="100"
+                Source="pera.png"
+                WidthRequest="100">
                 <Image.GestureRecognizers>
-                    <DragGestureRecognizer DragStarting="OnDragStarting" />
+                    <DragGestureRecognizer DragStarting="OnDragStarting"/>
                 </Image.GestureRecognizers>
             </Image>
 
-            <Image x:Name="NaranjaImage" Grid.Column="1" Grid.Row="0" Source="naranja.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0">
+            <!--  ? Bigarren kolumnako argazkiak  -->
+            <Image
+                x:Name="NaranjaImage"
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="0"
+                Aspect="AspectFit"
+                HeightRequest="100"
+                Source="naranja.png"
+                WidthRequest="100">
                 <Image.GestureRecognizers>
-                    <DragGestureRecognizer DragStarting="OnDragStarting" />
+                    <DragGestureRecognizer DragStarting="OnDragStarting"/>
                 </Image.GestureRecognizers>
             </Image>
 
-            <Image x:Name="PiniaImage" Grid.Column="1" Grid.Row="1" Source="pinia.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0">
+            <Image
+                x:Name="PiniaImage"
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="0"
+                Aspect="AspectFit"
+                HeightRequest="100"
+                Source="pinia.png"
+                WidthRequest="100">
                 <Image.GestureRecognizers>
-                    <DragGestureRecognizer DragStarting="OnDragStarting" />
+                    <DragGestureRecognizer DragStarting="OnDragStarting"/>
                 </Image.GestureRecognizers>
             </Image>
 
-            <Image x:Name="MelonImage" Grid.Column="1" Grid.Row="2" Source="melon.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" Margin="0">
+            <Image
+                x:Name="MelonImage"
+                Grid.Row="2"
+                Grid.Column="1"
+                Margin="0"
+                Aspect="AspectFit"
+                HeightRequest="100"
+                Source="melon.png"
+                WidthRequest="100">
                 <Image.GestureRecognizers>
-                    <DragGestureRecognizer DragStarting="OnDragStarting" />
+                    <DragGestureRecognizer DragStarting="OnDragStarting"/>
                 </Image.GestureRecognizers>
             </Image>
 
+            <!--  ? Karritoaren irudia  -->
+            <Image
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                Grid.Column="2"
+                Margin="10"
+                Aspect="AspectFit"
+                HeightRequest="150"
+                HorizontalOptions="Center"
+                Source="carrito.png"
+                VerticalOptions="Center"
+                WidthRequest="150">
 
-            <Image Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" Source="carrito.png" Aspect="AspectFit" HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="Center" Margin="10">
                 <Image.GestureRecognizers>
-                    <DropGestureRecognizer Drop="OnDrop" />
+                    <DropGestureRecognizer Drop="OnDrop"/>
                 </Image.GestureRecognizers>
             </Image>
 
-
-            <StackLayout Grid.Column="3" Grid.Row="0" Grid.RowSpan="3" Padding="10">
-                <Label Text="Frutak:" FontAttributes="Bold" />
+            <!-- ? Gure botoiak eta Fruten zerrenda  -->
+            <StackLayout
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                Grid.Column="3"
+                Padding="10">
+                <Label FontAttributes="Bold"
+                        Text="Frutak:"/>
                 <ListView x:Name="fruitsListView">
+                    <!--  ? Karritoko frutak erakursten dituen zerrenda  -->
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding Key}" Detail="{Binding Value, StringFormat='x {0}'}" />
+                            <TextCell Detail="{Binding Value, StringFormat='x {0}'}"
+                                    Text="{Binding Key}"/>
+
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
 
+                <!-- ? Zerrendarekin lan egiteko botoiak  -->
+                <StackLayout
+                    Margin="0,10,0,0"
+                    HorizontalOptions="Center"
+                    Orientation="Vertical"
+                    Spacing="10">
+                    <Button
+                        BackgroundColor="Green"
+                        Clicked="OnClearButtonClicked"
+                        Text="Garbitu"
+                        TextColor="White"
+                        WidthRequest="100"/>
 
-                <StackLayout Orientation="Vertical" HorizontalOptions="Center" Spacing="10" Margin="0,10,0,0">
-                    <Button Text="Garbitu" 
-                    BackgroundColor="Green" 
-                    TextColor="White" 
-                    WidthRequest="100" 
-                    Clicked="OnClearButtonClicked" />
-
-
-                    <Button Text="Irten" 
-                    BackgroundColor="Red" 
-                    TextColor="White" 
-                    WidthRequest="100" 
-                    Clicked="OnExitButtonClicked" />
+                    <Button
+                        BackgroundColor="Red"
+                        Clicked="OnExitButtonClicked"
+                        Text="Irten"
+                        TextColor="White"
+                        WidthRequest="100"/>
                 </StackLayout>
             </StackLayout>
 
-
-            <Button Grid.Column="0" Grid.Row="3" 
-                Text="Desegina" 
-                HorizontalOptions="Start" 
-                VerticalOptions="End" 
-                Margin="10" 
-                WidthRequest="100" 
-                BackgroundColor="White" 
-                TextColor="Black"
-                BorderColor="Black" 
+            <!-- ? Azkeneko fruta kentzeko botoia  -->
+            <Button
+                Grid.Row="3"
+                Grid.Column="0"
+                Margin="10"
+                BackgroundColor="White"
+                BorderColor="Black"
+                Clicked="OnUndoButtonClicked"
+                HorizontalOptions="Start"
                 StyleClass="CustomButton"
-                Clicked="OnUndoButtonClicked" />
-
+                Text="Desegina"
+                TextColor="Black"
+                VerticalOptions="End"
+                WidthRequest="100"/>
         </Grid>
     </ScrollView>
 </ContentPage>
